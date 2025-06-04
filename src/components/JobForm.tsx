@@ -25,8 +25,15 @@ export const JobForm: React.FC<JobFormProps> = ({
       setSalary(initialData.salary?.toString() || '');
       setLocation(initialData.location);
       setIsActive(initialData.isActive ?? true);
+    } else {
+      // Reset form for new job creation
+      setTitle('');
+      setDescription('');
+      setSalary('');
+      setLocation('');
+      setIsActive(true);
     }
-  }, [initialData]);
+  }, [initialData, isEditing]); // Depend on isEditing to reset if switching from edit to new
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,14 +47,21 @@ export const JobForm: React.FC<JobFormProps> = ({
     };
 
     await onSubmit(jobData);
+    if (!isEditing) { // Reset form only after creating a new job
+        setTitle('');
+        setDescription('');
+        setSalary('');
+        setLocation('');
+        setIsActive(true);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="job-form">
       <div>
-        <label htmlFor="title">Título da Vaga *</label>
+        <label htmlFor="title-job-form">Título da Vaga *</label>
         <input
-          id="title"
+          id="title-job-form"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -56,9 +70,9 @@ export const JobForm: React.FC<JobFormProps> = ({
       </div>
 
       <div>
-        <label htmlFor="description">Descrição *</label>
+        <label htmlFor="description-job-form">Descrição *</label>
         <textarea
-          id="description"
+          id="description-job-form"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
@@ -67,9 +81,9 @@ export const JobForm: React.FC<JobFormProps> = ({
       </div>
 
       <div>
-        <label htmlFor="salary">Salário</label>
+        <label htmlFor="salary-job-form">Salário</label>
         <input
-          id="salary"
+          id="salary-job-form"
           type="number"
           value={salary}
           onChange={(e) => setSalary(e.target.value)}
@@ -79,9 +93,9 @@ export const JobForm: React.FC<JobFormProps> = ({
       </div>
 
       <div>
-        <label htmlFor="location">Localização *</label>
+        <label htmlFor="location-job-form">Localização *</label>
         <input
-          id="location"
+          id="location-job-form"
           type="text"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
@@ -90,21 +104,20 @@ export const JobForm: React.FC<JobFormProps> = ({
       </div>
 
       {isEditing && (
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              checked={isActive}
-              onChange={(e) => setIsActive(e.target.checked)}
-            />
-            Vaga Ativa
-          </label>
+        <div className="custom-checkbox-container">
+          <input
+            id="isActive-job-form"
+            type="checkbox"
+            checked={isActive}
+            onChange={(e) => setIsActive(e.target.checked)}
+          />
+          <label htmlFor="isActive-job-form">Vaga Ativa</label>
         </div>
       )}
 
-      <button type="submit">
+      <button type="submit" className="success form-submit-button">
         {isEditing ? 'Atualizar Vaga' : 'Criar Vaga'}
       </button>
     </form>
   );
-}; 
+};
