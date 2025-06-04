@@ -49,7 +49,7 @@ export const AdminPanelPage: React.FC = () => {
     if (!editingJob) return;
     
     try {
-      await api.updateJob(editingJob.id, jobData);
+      await api.updateJob(editingJob.id.toString(), jobData);
       await loadJobs();
       setEditingJob(null);
     } catch (err) {
@@ -57,11 +57,11 @@ export const AdminPanelPage: React.FC = () => {
     }
   };
 
-  const handleDeleteJob = async (jobId: string) => {
+  const handleDeleteJob = async (jobId: number) => {
     if (!window.confirm('Tem certeza que deseja excluir esta vaga?')) return;
     
     try {
-      await api.deleteJob(jobId);
+      await api.deleteJob(jobId.toString());
       await loadJobs();
       if (selectedJob?.id === jobId) setSelectedJob(null);
       if (editingJob?.id === jobId) setEditingJob(null);
@@ -119,7 +119,7 @@ export const AdminPanelPage: React.FC = () => {
     }
   };
 
-  const handleCopyJobLink = (jobId: string) => {
+  const handleCopyJobLink = (jobId: number) => {
     const url = `${window.location.origin}/apply/${jobId}`;
     navigator.clipboard.writeText(url)
       .then(() => {
@@ -173,7 +173,6 @@ export const AdminPanelPage: React.FC = () => {
                   <span className={`status ${job.isActive ? 'active' : 'inactive'}`}>
                     {job.isActive ? 'Ativa' : 'Inativa'}
                   </span>
-                  <p className="job-type">{job.type}</p>
                 </div>
                 
                 <div className="job-actions">
@@ -250,8 +249,7 @@ export const AdminPanelPage: React.FC = () => {
             <div className="job-info">
               <h3>{selectedJob.title}</h3>
               <p>{selectedJob.description}</p>
-              <p><strong>Tipo:</strong> {selectedJob.type}</p>
-              {selectedJob.salary && <p><strong>Salário:</strong> R$ {selectedJob.salary}</p>}
+              {selectedJob.salary && <p><strong>Salário:</strong> R$ {selectedJob.salary.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>}
               <p><strong>Localização:</strong> {selectedJob.location}</p>
             </div>
 
