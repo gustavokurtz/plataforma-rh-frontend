@@ -141,7 +141,7 @@ export const AdminPanelPage: React.FC = () => {
   return (
     <div className="admin-panel">
       <header>
-        <h1>Painel Administrativo</h1>
+      <h1>Painel Recrutamento Sankhya</h1>
         <button onClick={logout}>Sair</button>
       </header>
 

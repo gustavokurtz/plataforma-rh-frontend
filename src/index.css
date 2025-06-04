@@ -1,4 +1,4 @@
-/* src/index.css - Modern Startup Design */
+/* src/index.css - Modern Minimal Design */
 
 /* Reset básico e configuração de fontes */
 :root {
@@ -10,55 +10,46 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Paleta de Cores Moderna - Tons sóbrios e profissionais */
-  --primary: #0F172A; /* Slate 900 - Quase preto elegante */
-  --primary-light: #1E293B; /* Slate 800 */
-  --primary-muted: #475569; /* Slate 600 */
+  /* Paleta Minimalista - Preto e Branco */
+  --primary: #000000; /* Preto puro */
+  --primary-light: #1a1a1a; /* Preto mais suave */
+  --primary-muted: #666666; /* Cinza médio */
   
-  --accent: #3B82F6; /* Blue 500 - Azul moderno para highlights */
-  --accent-light: #60A5FA; /* Blue 400 */
-  --accent-dark: #1D4ED8; /* Blue 700 */
+  /* Cores de Estado - Apenas para elementos específicos */
+  --success: #22c55e; /* Verde para criar/sucesso */
+  --danger: #ef4444; /* Vermelho para excluir */
+  --warning: #f59e0b; /* Amarelo para editar */
   
-  --success: #10B981; /* Emerald 500 */
-  --success-light: #34D399; /* Emerald 400 */
-  --warning: #F59E0B; /* Amber 500 */
-  --danger: #EF4444; /* Red 500 */
-  --danger-dark: #DC2626; /* Red 600 */
+  /* Escala de Cinzas Minimalista */
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
   
-  --neutral-50: #F8FAFC;
-  --neutral-100: #F1F5F9;
-  --neutral-200: #E2E8F0;
-  --neutral-300: #CBD5E1;
-  --neutral-400: #94A3B8;
-  --neutral-500: #64748B;
-  --neutral-600: #475569;
-  --neutral-700: #334155;
-  --neutral-800: #1E293B;
-  --neutral-900: #0F172A;
+  --text-primary: #000000;
+  --text-secondary: #525252;
+  --text-muted: #a3a3a3;
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-tertiary: #f5f5f5;
   
-  --text-primary: #0F172A;
-  --text-secondary: #64748B;
-  --text-muted: #94A3B8;
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8FAFC;
-  --bg-tertiary: #F1F5F9;
+  --border-light: #e5e5e5;
+  --border-medium: #d4d4d4;
   
-  --border-light: #E2E8F0;
-  --border-medium: #CBD5E1;
+  /* Apenas um padrão de border-radius */
+  --radius: 8px;
   
-  --radius-xs: 0.25rem; /* 4px */
-  --radius-sm: 0.375rem; /* 6px */
-  --radius-md: 0.5rem; /* 8px */
-  --radius-lg: 0.75rem; /* 12px */
-  --radius-xl: 1rem; /* 16px */
-  
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   
-  --transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.2s ease;
 }
 
 * {
@@ -122,26 +113,26 @@ p {
 }
 
 a {
-  color: var(--accent);
+  color: var(--text-primary);
   text-decoration: none;
   transition: var(--transition);
   font-weight: 500;
 }
 
 a:hover {
-  color: var(--accent-dark);
+  color: var(--text-muted);
 }
 
-/* Sistema de Botões Padronizado */
+/* Sistema de Botões Modernizado */
 button, .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 500;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius);
   border: 1px solid transparent;
   cursor: pointer;
   transition: var(--transition);
@@ -153,7 +144,7 @@ button, .button {
 }
 
 button:focus, .button:focus {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -163,35 +154,33 @@ button:disabled, .button:disabled {
   pointer-events: none;
 }
 
-/* Botão Primário - Preto elegante */
+/* Botão Primário - Preto minimalista */
 button.primary, .button.primary, button[type="submit"] {
   background-color: var(--primary);
   color: white;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--primary);
   font-weight: 600;
 }
 
 button.primary:hover, .button.primary:hover, button[type="submit"]:hover {
   background-color: var(--primary-light);
-  box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }
 
-/* Botão Secundário - Outline moderno */
+/* Botão Secundário - Outline minimalista */
 button.secondary, .button.secondary {
   background-color: transparent;
-  color: var(--primary);
-  border: 1.5px solid var(--border-medium);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
   font-weight: 500;
 }
 
 button.secondary:hover, .button.secondary:hover {
   background-color: var(--bg-tertiary);
   border-color: var(--primary);
-  color: var(--primary);
 }
 
-/* Botão Ghost - Minimalista */
+/* Botão Ghost - Super minimalista */
 button.ghost, .button.ghost {
   background-color: transparent;
   color: var(--text-secondary);
@@ -204,7 +193,7 @@ button.ghost:hover, .button.ghost:hover {
   color: var(--text-primary);
 }
 
-/* Botões de Estado */
+/* Botões de Estado - Apenas para elementos específicos */
 button.success, .button.success {
   background-color: var(--success);
   color: white;
@@ -212,7 +201,7 @@ button.success, .button.success {
 }
 
 button.success:hover, .button.success:hover {
-  background-color: var(--success-light);
+  background-color: #16a34a;
   transform: translateY(-1px);
 }
 
@@ -223,7 +212,7 @@ button.warning, .button.warning {
 }
 
 button.warning:hover, .button.warning:hover {
-  background-color: #D97706;
+  background-color: #d97706;
   transform: translateY(-1px);
 }
 
@@ -234,13 +223,13 @@ button.danger, .button.danger {
 }
 
 button.danger:hover, .button.danger:hover {
-  background-color: var(--danger-dark);
+  background-color: #dc2626;
   transform: translateY(-1px);
 }
 
 /* Botões pequenos */
 button.small, .button.small {
-  padding: 0.4rem 0.875rem;
+  padding: 0.5rem 1rem;
   font-size: 0.8rem;
 }
 
@@ -251,7 +240,7 @@ form {
   gap: 1.5rem;
   background-color: var(--bg-primary);
   padding: 2rem;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-light);
   width: 100%;
@@ -282,8 +271,8 @@ input[type="file"] {
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
-  border: 1.5px solid var(--border-light);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: var(--transition);
@@ -297,8 +286,8 @@ input[type="number"]:focus,
 input[type="tel"]:focus,
 textarea:focus,
 input[type="file"]:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgb(0 0 0 / 0.1);
   outline: none;
 }
 
@@ -311,7 +300,7 @@ input[type="file"]::file-selector-button {
   border: none;
   background: var(--primary);
   padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   color: white;
   cursor: pointer;
   transition: var(--transition);
@@ -332,15 +321,15 @@ textarea {
 input[type="checkbox"] {
   width: 1.125rem;
   height: 1.125rem;
-  border-radius: var(--radius-xs);
-  border: 1.5px solid var(--border-medium);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-medium);
   accent-color: var(--primary);
   margin-right: 0.5rem;
   cursor: pointer;
 }
 
 input[type="checkbox"]:focus {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -348,7 +337,7 @@ input[type="checkbox"]:focus {
 .card {
   background: var(--bg-primary);
   padding: 1.5rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-light);
   transition: var(--transition);
@@ -360,22 +349,22 @@ input[type="checkbox"]:focus {
 
 /* Mensagens de Estado */
 .error-message {
-  color: var(--danger-dark);
-  background-color: #FEF2F2;
-  border: 1px solid #FECACA;
+  color: var(--danger);
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
   padding: 1rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius);
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 500;
 }
 
 .success-message {
-  color: #065F46;
-  background-color: #D1FAE5;
-  border: 1px solid #A7F3D0;
+  color: var(--success);
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
   padding: 1rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius);
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 500;
@@ -401,7 +390,7 @@ input[type="checkbox"]:focus {
 .login-page form {
   width: 100%;
   max-width: 400px;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
 }
 
 .login-page form h1 {
@@ -422,7 +411,7 @@ input[type="checkbox"]:focus {
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 2px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .admin-panel header h1 {
@@ -433,14 +422,14 @@ input[type="checkbox"]:focus {
 .admin-panel header button {
   background-color: var(--primary);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
 }
 
 .content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -454,7 +443,7 @@ input[type="checkbox"]:focus {
 .jobs-list, .job-details, .job-form-container {
   background: var(--bg-primary);
   padding: 1.5rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-light);
   height: fit-content;
@@ -486,13 +475,13 @@ input[type="checkbox"]:focus {
 }
 
 .jobs-header button:hover {
-  background-color: var(--success-light);
+  background-color: #16a34a;
   transform: translateY(-1px);
 }
 
 .job-item {
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius);
   padding: 1.25rem;
   margin-bottom: 1rem;
   transition: var(--transition);
@@ -523,24 +512,26 @@ input[type="checkbox"]:focus {
 
 .job-actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .job-actions button {
-  padding: 0.4rem 0.875rem;
+  padding: 0.5rem 1rem;
   font-size: 0.8rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
 }
 
 /* Padronização dos botões de ação */
 .job-actions button:nth-child(1) { /* Detalhes */
-  background-color: var(--accent);
+  background-color: var(--primary);
   color: white;
+  border: 1px solid var(--primary);
 }
 
 .job-actions button:nth-child(1):hover {
-  background-color: var(--accent-dark);
+  background-color: var(--primary-light);
   transform: translateY(-1px);
 }
 
@@ -550,7 +541,7 @@ input[type="checkbox"]:focus {
 }
 
 .job-actions button:nth-child(2):hover {
-  background-color: #D97706;
+  background-color: #d97706;
   transform: translateY(-1px);
 }
 
@@ -560,15 +551,15 @@ input[type="checkbox"]:focus {
 }
 
 .job-actions button:nth-child(3):hover {
-  background-color: var(--danger-dark);
+  background-color: #dc2626;
   transform: translateY(-1px);
 }
 
 /* Status badges modernos */
 .status {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -576,13 +567,15 @@ input[type="checkbox"]:focus {
 }
 
 .status.active {
-  background-color: #D1FAE5;
-  color: #065F46;
+  background-color: #f0fdf4;
+  color: var(--success);
+  border: 1px solid #bbf7d0;
 }
 
 .status.inactive {
-  background-color: #FEE2E2;
-  color: #991B1B;
+  background-color: #fef2f2;
+  color: var(--danger);
+  border: 1px solid #fecaca;
 }
 
 /* Detalhes da Vaga */
@@ -608,16 +601,16 @@ input[type="checkbox"]:focus {
 
 .job-details .copy-link-button {
   background-color: transparent;
-  border: 1.5px solid var(--success);
-  color: var(--success);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
 }
 
 .job-details .copy-link-button:hover {
-  background-color: var(--success);
-  color: white;
+  background-color: var(--bg-tertiary);
+  border-color: var(--primary);
   transform: translateY(-1px);
 }
 
@@ -636,7 +629,7 @@ input[type="checkbox"]:focus {
 
 .application-item {
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   background-color: var(--bg-secondary);
@@ -673,36 +666,38 @@ input[type="checkbox"]:focus {
 }
 
 .download-button {
-  background-color: var(--accent);
+  background-color: var(--primary);
   color: white;
+  border: 1px solid var(--primary);
 }
 
 .download-button:hover {
-  background-color: var(--accent-dark);
+  background-color: var(--primary-light);
   transform: translateY(-1px);
 }
 
 .analyze-button {
-  background-color: var(--success);
+  background-color: var(--primary);
   color: white;
+  border: 1px solid var(--primary);
 }
 
 .analyze-button:hover {
-  background-color: var(--success-light);
+  background-color: var(--primary-light);
   transform: translateY(-1px);
 }
 
 .analysis-results {
   background-color: var(--bg-primary);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   padding: 1.5rem;
   margin-top: 1.5rem;
 }
 
 .analysis-results h4 {
   font-size: 1.125rem;
-  color: var(--accent);
+  color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: 600;
 }
@@ -721,7 +716,7 @@ input[type="checkbox"]:focus {
 .skills-list, .roles-list {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius);
   padding: 1rem;
   font-size: 0.875rem;
 }
@@ -739,8 +734,8 @@ input[type="checkbox"]:focus {
   margin: 2rem auto;
   padding: 2rem;
   background-color: var(--bg-primary);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-light);
 }
 
@@ -780,7 +775,7 @@ input[type="checkbox"]:focus {
 }
 
 .apply-page form button[type="submit"]:hover {
-  background-color: var(--success-light);
+  background-color: #16a34a;
   transform: translateY(-1px);
 }
 
@@ -801,6 +796,27 @@ input[type="checkbox"]:focus {
   padding: 3rem;
   font-size: 1.125rem;
   color: var(--text-muted);
+}
+
+/* Melhor espaçamento para formulários */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-end;
+}
+
+.form-actions button {
+  min-width: 120px;
+}
+
+.form-actions button.secondary {
+  order: 1;
+}
+
+.form-actions button.primary,
+.form-actions button.success {
+  order: 2;
 }
 
 /* Responsividade Melhorada */
@@ -840,6 +856,14 @@ input[type="checkbox"]:focus {
   .application-actions button {
     width: 100%;
   }
+  
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -848,7 +872,7 @@ input[type="checkbox"]:focus {
   h3 { font-size: 1.25rem; }
   
   button, .button {
-    padding: 0.625rem 1rem;
+    padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
   }
   
@@ -863,7 +887,7 @@ input[type="checkbox"]:focus {
   input[type="tel"],
   textarea,
   input[type="file"] {
-    padding: 0.625rem 0.875rem;
+    padding: 0.75rem;
     font-size: 0.875rem;
   }
   
@@ -927,50 +951,8 @@ input[type="checkbox"]:focus {
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
-}
-
-/* Ajustes finais para App.css específico */
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em var(--accent));
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.read-the-docs {
-  color: var(--text-muted);
 }
 
 /* Estados de Loading e Empty */
@@ -982,7 +964,7 @@ textarea:focus-visible {
   padding: 3rem 1rem;
   text-align: center;
   background: var(--bg-secondary);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   border: 1px dashed var(--border-medium);
 }
 
@@ -990,35 +972,4 @@ textarea:focus-visible {
   margin-top: 1rem;
   color: var(--text-muted);
   font-size: 0.9rem;
-}
-
-.loading-spinner {
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid var(--border-light);
-  border-top: 2px solid var(--accent);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Ações do formulário */
-.form-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.form-actions button {
-  flex: 1;
-}
-
-@media (max-width: 480px) {
-  .form-actions {
-    flex-direction: column;
-  }
 }
