@@ -1,12 +1,13 @@
 export interface Job {
-  id: string;
+  id: number;
   title: string;
   description: string;
   location: string;
-  type: string;
   salary?: number;
   isActive: boolean;
   applications?: JobApplication[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface JobApplication {
@@ -38,10 +39,13 @@ export interface CreateJobDto {
   title: string;
   description: string;
   location: string;
-  type: string;
   salary?: number;
 }
 
-export interface UpdateJobDto extends CreateJobDto {
+export interface UpdateJobDto {
+  title: string;
+  description: string;
+  location: string;
+  salary?: number;
   isActive: boolean;
 } 

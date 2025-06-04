@@ -16,7 +16,6 @@ export const JobForm: React.FC<JobFormProps> = ({
   const [description, setDescription] = useState('');
   const [salary, setSalary] = useState<string>('');
   const [location, setLocation] = useState('');
-  const [type, setType] = useState('CLT');
   const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
@@ -25,7 +24,6 @@ export const JobForm: React.FC<JobFormProps> = ({
       setDescription(initialData.description);
       setSalary(initialData.salary?.toString() || '');
       setLocation(initialData.location);
-      setType(initialData.type || 'CLT');
       setIsActive(initialData.isActive ?? true);
     } else {
       // Reset form for new job creation
@@ -33,7 +31,6 @@ export const JobForm: React.FC<JobFormProps> = ({
       setDescription('');
       setSalary('');
       setLocation('');
-      setType('CLT');
       setIsActive(true);
     }
   }, [initialData, isEditing]); // Depend on isEditing to reset if switching from edit to new
@@ -41,22 +38,23 @@ export const JobForm: React.FC<JobFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const jobData: CreateJobDto | UpdateJobDto = {
+    const baseData = {
       title,
       description,
       location,
-      type,
-      ...(salary ? { salary: Number(salary) } : {}),
-      ...(isEditing ? { isActive } : {}),
+      ...(salary ? { salary: parseFloat(salary) } : {})
     };
 
+    const jobData = isEditing 
+      ? { ...baseData, isActive } 
+      : baseData;
+
     await onSubmit(jobData);
-    if (!isEditing) { // Reset form only after creating a new job
+    if (!isEditing) {
         setTitle('');
         setDescription('');
         setSalary('');
         setLocation('');
-        setType('CLT');
         setIsActive(true);
     }
   };
@@ -86,21 +84,6 @@ export const JobForm: React.FC<JobFormProps> = ({
       </div>
 
       <div>
-        <label htmlFor="type-job-form">Tipo de Contratação *</label>
-        <select
-          id="type-job-form"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          required
-        >
-          <option value="CLT">CLT</option>
-          <option value="PJ">PJ</option>
-          <option value="Temporário">Temporário</option>
-          <option value="Estágio">Estágio</option>
-        </select>
-      </div>
-
-      <div>
         <label htmlFor="salary-job-form">Salário</label>
         <input
           id="salary-job-form"
@@ -108,7 +91,7 @@ export const JobForm: React.FC<JobFormProps> = ({
           value={salary}
           onChange={(e) => setSalary(e.target.value)}
           min="0"
-          step="100"
+          step="0.01"
         />
       </div>
 

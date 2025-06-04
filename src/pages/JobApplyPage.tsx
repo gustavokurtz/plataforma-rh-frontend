@@ -76,7 +76,6 @@ export const JobApplyPage: React.FC = () => {
       <div className="apply-page success">
         <h2>Candidatura Enviada com Sucesso!</h2>
         <p>Obrigado por se candidatar. Entraremos em contato em breve.</p>
-        <button onClick={handleBack} className="secondary">Voltar</button>
       </div>
     );
   }
@@ -86,7 +85,6 @@ export const JobApplyPage: React.FC = () => {
       <div className="apply-page error">
         <h2>Erro</h2>
         <p>{error}</p>
-        <button onClick={handleBack} className="secondary">Voltar</button>
       </div>
     );
   }
