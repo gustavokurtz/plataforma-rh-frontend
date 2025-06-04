@@ -160,7 +160,6 @@ export const JobApplyPage: React.FC = () => {
           </div>
 
           <div className="form-actions">
-            <button type="button" onClick={handleBack} className="secondary">Voltar</button>
             <button type="submit" disabled={isLoading} className="success">
               {isLoading ? 'Enviando...' : 'Enviar Candidatura'}
             </button>
