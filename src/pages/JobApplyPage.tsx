@@ -63,12 +63,20 @@ export const JobApplyPage: React.FC = () => {
     }
   };
 
+  const handleBack = () => {
+    if (window.history.length > 2) {
+      navigate(-1);
+    } else {
+      window.location.href = '/';
+    }
+  };
+
   if (success) {
     return (
       <div className="apply-page success">
         <h2>Candidatura Enviada com Sucesso!</h2>
         <p>Obrigado por se candidatar. Entraremos em contato em breve.</p>
-        <button onClick={() => navigate('/')}>Voltar</button>
+        <button onClick={handleBack} className="secondary">Voltar</button>
       </div>
     );
   }
@@ -78,7 +86,7 @@ export const JobApplyPage: React.FC = () => {
       <div className="apply-page error">
         <h2>Erro</h2>
         <p>{error}</p>
-        <button onClick={() => navigate('/')}>Voltar</button>
+        <button onClick={handleBack} className="secondary">Voltar</button>
       </div>
     );
   }
@@ -86,7 +94,8 @@ export const JobApplyPage: React.FC = () => {
   if (!job) {
     return (
       <div className="apply-page loading">
-        <p>Carregando...</p>
+        <div className="loading-spinner"></div>
+        <p>Carregando informações da vaga...</p>
       </div>
     );
   }
@@ -146,9 +155,12 @@ export const JobApplyPage: React.FC = () => {
             />
           </div>
 
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Enviando...' : 'Enviar Candidatura'}
-          </button>
+          <div className="form-actions">
+            <button type="button" onClick={handleBack} className="secondary">Voltar</button>
+            <button type="submit" disabled={isLoading} className="primary">
+              {isLoading ? 'Enviando...' : 'Enviar Candidatura'}
+            </button>
+          </div>
         </form>
       </div>
     </div>

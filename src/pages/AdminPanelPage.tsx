@@ -11,6 +11,7 @@ interface AnalysisMap {
 export const AdminPanelPage: React.FC = () => {
   const { logout } = useAuth();
   const [jobs, setJobs] = useState<Job[]>([]);
+  const [isLoadingJobs, setIsLoadingJobs] = useState(true);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
   const [showCreateForm, setShowCreateForm] = useState(false);
@@ -23,11 +24,14 @@ export const AdminPanelPage: React.FC = () => {
   }, []);
 
   const loadJobs = async () => {
+    setIsLoadingJobs(true);
     try {
       const jobsList = await api.getAllJobs();
       setJobs(jobsList);
     } catch (err) {
       setError('Erro ao carregar vagas');
+    } finally {
+      setIsLoadingJobs(false);
     }
   };
 
@@ -150,22 +154,33 @@ export const AdminPanelPage: React.FC = () => {
             <button onClick={() => setShowCreateForm(true)}>Nova Vaga</button>
           </div>
 
-          {jobs.map((job) => (
-            <div key={job.id} className="job-item">
-              <div className="job-info">
-                <h3>{job.title}</h3>
-                <span className={`status ${job.isActive ? 'active' : 'inactive'}`}>
-                  {job.isActive ? 'Ativa' : 'Inativa'}
-                </span>
-              </div>
-              
-              <div className="job-actions">
-                <button onClick={() => setSelectedJob(job)}>Detalhes</button>
-                <button onClick={() => setEditingJob(job)}>Editar</button>
-                <button onClick={() => handleDeleteJob(job.id)}>Excluir</button>
-              </div>
+          {isLoadingJobs ? (
+            <div className="loading-state">
+              <div className="loading-spinner"></div>
+              <p>Carregando vagas...</p>
             </div>
-          ))}
+          ) : jobs.length === 0 ? (
+            <div className="empty-state">
+              <p>Nenhuma vaga cadastrada.</p>
+            </div>
+          ) : (
+            jobs.map((job) => (
+              <div key={job.id} className="job-item">
+                <div className="job-info">
+                  <h3>{job.title}</h3>
+                  <span className={`status ${job.isActive ? 'active' : 'inactive'}`}>
+                    {job.isActive ? 'Ativa' : 'Inativa'}
+                  </span>
+                </div>
+                
+                <div className="job-actions">
+                  <button onClick={() => setSelectedJob(job)}>Detalhes</button>
+                  <button onClick={() => setEditingJob(job)}>Editar</button>
+                  <button onClick={() => handleDeleteJob(job.id)}>Excluir</button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
 
         {showCreateForm && (
