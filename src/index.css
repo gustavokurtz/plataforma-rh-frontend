@@ -1,4 +1,4 @@
-/* src/index.css - Modern Minimal Design */
+/* src/index.css - Modern Startup Design - B&W Minimalist */
 
 /* Reset básico e configuração de fontes */
 :root {
@@ -10,46 +10,39 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Paleta Minimalista - Preto e Branco */
-  --primary: #000000; /* Preto puro */
-  --primary-light: #1a1a1a; /* Preto mais suave */
-  --primary-muted: #666666; /* Cinza médio */
+  /* Paleta de Cores Minimalista - Preto, Branco e Cinzas + Acentos específicos */
+  --primary-text: #1A1A1A; /* Texto principal escuro */
+  --secondary-text: #555555; /* Texto secundário/muted */
+  --bg-main: #FFFFFF; /* Fundo principal branco */
+  --bg-offset: #F5F5F5; /* Fundo sutilmente diferente */
+  --bg-dark: #0F0F0F; /* Elementos escuros de fundo/contraste */
+  --border-color: #E0E0E0; /* Bordas claras */
+  --border-dark: #333333; /* Bordas escuras para contraste */
+
+  --accent-neutral: #333333; /* Um cinza escuro para botões neutros */
+  --accent-neutral-hover: #000000; /* Preto para hover de botões neutros */
   
-  /* Cores de Estado - Apenas para elementos específicos */
-  --success: #22c55e; /* Verde para criar/sucesso */
-  --danger: #ef4444; /* Vermelho para excluir */
-  --warning: #f59e0b; /* Amarelo para editar */
+  --success: #00BFA6; /* Verde moderno para sucesso/criar */
+  --success-hover: #00A991; /* Verde mais escuro para hover */
+  --success-text: #FFFFFF;
   
-  /* Escala de Cinzas Minimalista */
-  --neutral-50: #fafafa;
-  --neutral-100: #f5f5f5;
-  --neutral-200: #e5e5e5;
-  --neutral-300: #d4d4d4;
-  --neutral-400: #a3a3a3;
-  --neutral-500: #737373;
-  --neutral-600: #525252;
-  --neutral-700: #404040;
-  --neutral-800: #262626;
-  --neutral-900: #171717;
+  --danger: #FF4D4F; /* Vermelho moderno para perigo/cancelar/excluir */
+  --danger-hover: #E6393E; /* Vermelho mais escuro para hover */
+  --danger-text: #FFFFFF;
   
-  --text-primary: #000000;
-  --text-secondary: #525252;
-  --text-muted: #a3a3a3;
-  --bg-primary: #ffffff;
-  --bg-secondary: #fafafa;
-  --bg-tertiary: #f5f5f5;
+  --text-on-dark: #F5F5F5; /* Texto claro para fundos escuros */
+  --text-on-light: #1A1A1A; /* Texto escuro para fundos claros */
+
+  /* Raio de Borda Único Moderno */
+  --radius-main: 0.375rem; /* 6px */
   
-  --border-light: #e5e5e5;
-  --border-medium: #d4d4d4;
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.07), 0 8px 10px -6px rgb(0 0 0 / 0.07);
   
-  /* Apenas um padrão de border-radius */
-  --radius: 8px;
-  
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  
-  --transition: all 0.2s ease;
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -59,8 +52,8 @@
 }
 
 body {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
+  background-color: var(--bg-main);
+  color: var(--primary-text);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -79,61 +72,62 @@ body {
 
 /* Tipografia Moderna */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-primary);
+  color: var(--primary-text);
   font-weight: 700;
   letter-spacing: -0.025em;
   margin-bottom: 0.75rem;
 }
 
 h1 { 
-  font-size: 2.5rem; 
+  font-size: 2.25rem; /* Um pouco menor para um look mais clean */
   line-height: 1.2; 
   font-weight: 800;
   letter-spacing: -0.05em;
 }
 
 h2 { 
-  font-size: 2rem; 
+  font-size: 1.75rem; 
   line-height: 1.25; 
   font-weight: 700;
   letter-spacing: -0.035em;
 }
 
 h3 { 
-  font-size: 1.5rem; 
+  font-size: 1.25rem; 
   line-height: 1.33; 
   font-weight: 600;
 }
 
 p {
-  color: var(--text-secondary);
+  color: var(--secondary-text);
   margin-bottom: 1rem;
   line-height: 1.6;
   font-size: 0.95rem;
 }
 
 a {
-  color: var(--text-primary);
+  color: var(--accent-neutral);
   text-decoration: none;
   transition: var(--transition);
   font-weight: 500;
 }
 
 a:hover {
-  color: var(--text-muted);
+  color: var(--accent-neutral-hover);
+  text-decoration: underline;
 }
 
-/* Sistema de Botões Modernizado */
+/* Sistema de Botões Padronizado */
 button, .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.25rem;
   font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: var(--radius);
-  border: 1px solid transparent;
+  font-weight: 600; /* Um pouco mais de peso */
+  border-radius: var(--radius-main);
+  border: 1.5px solid transparent; /* Borda um pouco mais grossa */
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
@@ -144,92 +138,86 @@ button, .button {
 }
 
 button:focus, .button:focus {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--accent-neutral);
   outline-offset: 2px;
 }
 
 button:disabled, .button:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-/* Botão Primário - Preto minimalista */
-button.primary, .button.primary, button[type="submit"] {
-  background-color: var(--primary);
-  color: white;
-  border: 1px solid var(--primary);
-  font-weight: 600;
+/* Botão Default/Neutral (era primary) */
+button.neutral, .button.neutral, button:not([type="submit"]):not(.success):not(.danger):not(.secondary):not(.ghost) {
+  background-color: var(--accent-neutral);
+  color: var(--text-on-dark);
+  border-color: var(--accent-neutral);
+  box-shadow: var(--shadow-xs);
 }
-
-button.primary:hover, .button.primary:hover, button[type="submit"]:hover {
-  background-color: var(--primary-light);
+button.neutral:hover, .button.neutral:hover, button:not([type="submit"]):not(.success):not(.danger):not(.secondary):not(.ghost):hover {
+  background-color: var(--accent-neutral-hover);
+  border-color: var(--accent-neutral-hover);
+  box-shadow: var(--shadow-sm);
   transform: translateY(-1px);
 }
 
-/* Botão Secundário - Outline minimalista */
+/* Botão de Submissão (Criar, Enviar) */
+button[type="submit"], button.success, .button.success {
+  background-color: var(--success);
+  color: var(--success-text);
+  border-color: var(--success);
+  box-shadow: var(--shadow-xs);
+}
+button[type="submit"]:hover, button.success:hover, .button.success:hover {
+  background-color: var(--success-hover);
+  border-color: var(--success-hover);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+/* Botão de Cancelar/Excluir */
+button.danger, .button.danger {
+  background-color: var(--danger);
+  color: var(--danger-text);
+  border-color: var(--danger);
+  box-shadow: var(--shadow-xs);
+}
+button.danger:hover, .button.danger:hover {
+  background-color: var(--danger-hover);
+  border-color: var(--danger-hover);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+/* Botão Secundário - Outline moderno (para Voltar, por exemplo) */
 button.secondary, .button.secondary {
   background-color: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-medium);
+  color: var(--primary-text);
+  border: 1.5px solid var(--border-color);
   font-weight: 500;
 }
-
 button.secondary:hover, .button.secondary:hover {
-  background-color: var(--bg-tertiary);
-  border-color: var(--primary);
+  background-color: var(--bg-offset);
+  border-color: var(--primary-text);
 }
 
-/* Botão Ghost - Super minimalista */
+/* Botão Ghost - Minimalista */
 button.ghost, .button.ghost {
   background-color: transparent;
-  color: var(--text-secondary);
+  color: var(--secondary-text);
   border: none;
   font-weight: 500;
 }
-
 button.ghost:hover, .button.ghost:hover {
-  background-color: var(--bg-tertiary);
-  color: var(--text-primary);
+  background-color: var(--bg-offset);
+  color: var(--primary-text);
 }
 
-/* Botões de Estado - Apenas para elementos específicos */
-button.success, .button.success {
-  background-color: var(--success);
-  color: white;
-  font-weight: 600;
-}
-
-button.success:hover, .button.success:hover {
-  background-color: #16a34a;
-  transform: translateY(-1px);
-}
-
-button.warning, .button.warning {
-  background-color: var(--warning);
-  color: white;
-  font-weight: 600;
-}
-
-button.warning:hover, .button.warning:hover {
-  background-color: #d97706;
-  transform: translateY(-1px);
-}
-
-button.danger, .button.danger {
-  background-color: var(--danger);
-  color: white;
-  font-weight: 600;
-}
-
-button.danger:hover, .button.danger:hover {
-  background-color: #dc2626;
-  transform: translateY(-1px);
-}
 
 /* Botões pequenos */
 button.small, .button.small {
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.875rem;
   font-size: 0.8rem;
 }
 
@@ -237,26 +225,27 @@ button.small, .button.small {
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  background-color: var(--bg-primary);
+  gap: 1.25rem; /* Um pouco menos de gap */
+  background-color: var(--bg-main);
   padding: 2rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-main); /* Consistente */
   box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-color);
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
 }
 
-form div {
+form div:not(.form-actions-wrapper):not(.form-actions) { /* Evitar aplicar a wrappers de botão */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
+
 label {
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--primary-text);
   font-size: 0.875rem;
   letter-spacing: -0.01em;
 }
@@ -271,10 +260,10 @@ input[type="file"] {
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-main); /* Consistente */
+  background-color: var(--bg-main);
+  color: var(--primary-text);
   transition: var(--transition);
   appearance: none;
 }
@@ -286,8 +275,8 @@ input[type="number"]:focus,
 input[type="tel"]:focus,
 textarea:focus,
 input[type="file"]:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgb(0 0 0 / 0.1);
+  border-color: var(--accent-neutral);
+  box-shadow: 0 0 0 2px rgb(51 51 51 / 0.1); /* Sombra de foco sutil */
   outline: none;
 }
 
@@ -298,10 +287,10 @@ input[type="file"] {
 input[type="file"]::file-selector-button {
   margin-right: 0.75rem;
   border: none;
-  background: var(--primary);
+  background: var(--accent-neutral);
   padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  color: white;
+  border-radius: var(--radius-main); /* Consistente */
+  color: var(--text-on-dark);
   cursor: pointer;
   transition: var(--transition);
   font-weight: 500;
@@ -309,7 +298,7 @@ input[type="file"]::file-selector-button {
 }
 
 input[type="file"]::file-selector-button:hover {
-  background: var(--primary-light);
+  background: var(--accent-neutral-hover);
 }
 
 textarea {
@@ -321,25 +310,25 @@ textarea {
 input[type="checkbox"] {
   width: 1.125rem;
   height: 1.125rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border-medium);
-  accent-color: var(--primary);
+  border-radius: 0.125rem; /* Checkbox pode ser um pouco mais quadrado */
+  border: 1.5px solid var(--border-color);
+  accent-color: var(--accent-neutral);
   margin-right: 0.5rem;
   cursor: pointer;
 }
 
 input[type="checkbox"]:focus {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--accent-neutral);
   outline-offset: 2px;
 }
 
 /* Cards e Containers */
 .card {
-  background: var(--bg-primary);
+  background: var(--bg-main);
   padding: 1.5rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-main); /* Consistente */
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-color);
   transition: var(--transition);
 }
 
@@ -350,10 +339,10 @@ input[type="checkbox"]:focus {
 /* Mensagens de Estado */
 .error-message {
   color: var(--danger);
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
+  background-color: #FFF0F0; /* Fundo vermelho claro */
+  border: 1px solid var(--danger);
   padding: 1rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-main); /* Consistente */
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 500;
@@ -361,10 +350,10 @@ input[type="checkbox"]:focus {
 
 .success-message {
   color: var(--success);
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background-color: #E6FFFA; /* Fundo verde claro */
+  border: 1px solid var(--success);
   padding: 1rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-main); /* Consistente */
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 500;
@@ -390,13 +379,13 @@ input[type="checkbox"]:focus {
 .login-page form {
   width: 100%;
   max-width: 400px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
 }
 
 .login-page form h1 {
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 /* Painel Admin */
@@ -411,25 +400,23 @@ input[type="checkbox"]:focus {
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-color); /* Borda mais sutil */
 }
 
 .admin-panel header h1 {
   margin-bottom: 0;
-  font-size: 2.25rem;
+  font-size: 2rem;
 }
 
-.admin-panel header button {
-  background-color: var(--primary);
-  color: white;
-  padding: 0.75rem 1.5rem;
+.admin-panel header button.neutral { /* Para o botão Sair */
+  padding: 0.5rem 1rem;
   font-size: 0.875rem;
 }
 
 .content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -441,11 +428,11 @@ input[type="checkbox"]:focus {
 
 /* Lista de Vagas */
 .jobs-list, .job-details, .job-form-container {
-  background: var(--bg-primary);
+  background: var(--bg-main);
   padding: 1.5rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-main); /* Consistente */
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-color);
   height: fit-content;
 }
 
@@ -455,6 +442,23 @@ input[type="checkbox"]:focus {
   max-width: none;
   border: none;
 }
+
+/* Wrapper para formulário e botão cancelar */
+.form-actions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Espaço entre o formulário e o botão cancelar */
+}
+
+.form-actions-wrapper .job-form { /* O formulário em si */
+  gap: 1rem; /* Ajustar espaçamento interno do JobForm se necessário */
+}
+
+.form-cancel-button { /* Botão cancelar dentro do job-form-container */
+  width: 100%; /* Fazer o botão cancelar ocupar a largura toda */
+  margin-top: 0.5rem; /* Espaço acima dele, se o gap do wrapper não for suficiente */
+}
+
 
 .jobs-header {
   display: flex;
@@ -468,30 +472,23 @@ input[type="checkbox"]:focus {
   font-size: 1.5rem;
 }
 
-.jobs-header button {
-  background-color: var(--success);
-  color: white;
+.jobs-header button.success { /* Para o botão Nova Vaga */
   font-weight: 600;
 }
 
-.jobs-header button:hover {
-  background-color: #16a34a;
-  transform: translateY(-1px);
-}
-
 .job-item {
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-main); /* Consistente */
   padding: 1.25rem;
   margin-bottom: 1rem;
   transition: var(--transition);
-  background: var(--bg-primary);
+  background: var(--bg-main);
 }
 
 .job-item:hover {
   box-shadow: var(--shadow-md);
-  border-color: var(--border-medium);
-  transform: translateY(-1px);
+  border-color: var(--secondary-text); /* Mudar cor da borda no hover */
+  transform: translateY(-2px); /* Efeito de elevação sutil */
 }
 
 .job-info {
@@ -507,59 +504,26 @@ input[type="checkbox"]:focus {
 .job-info p {
   margin-bottom: 0.25rem;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--secondary-text);
 }
 
 .job-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
-  margin-top: 1rem;
 }
 
-.job-actions button {
-  padding: 0.5rem 1rem;
+.job-actions button { /* Todos os botões dentro de job-actions */
+  padding: 0.4rem 0.875rem;
   font-size: 0.8rem;
-  border-radius: var(--radius);
-}
-
-/* Padronização dos botões de ação */
-.job-actions button:nth-child(1) { /* Detalhes */
-  background-color: var(--primary);
-  color: white;
-  border: 1px solid var(--primary);
-}
-
-.job-actions button:nth-child(1):hover {
-  background-color: var(--primary-light);
-  transform: translateY(-1px);
-}
-
-.job-actions button:nth-child(2) { /* Editar */
-  background-color: var(--warning);
-  color: white;
-}
-
-.job-actions button:nth-child(2):hover {
-  background-color: #d97706;
-  transform: translateY(-1px);
-}
-
-.job-actions button:nth-child(3) { /* Excluir */
-  background-color: var(--danger);
-  color: white;
-}
-
-.job-actions button:nth-child(3):hover {
-  background-color: #dc2626;
-  transform: translateY(-1px);
+  border-radius: var(--radius-main); /* Consistente */
 }
 
 /* Status badges modernos */
 .status {
   display: inline-block;
-  padding: 0.375rem 0.875rem;
-  border-radius: var(--radius);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-main); /* Consistente, mas pode ser mais arredondado se preferir para badge */
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -567,15 +531,15 @@ input[type="checkbox"]:focus {
 }
 
 .status.active {
-  background-color: #f0fdf4;
+  background-color: #E6FFFA; /* Fundo verde claro */
   color: var(--success);
-  border: 1px solid #bbf7d0;
+  border: 1px solid var(--success);
 }
 
 .status.inactive {
-  background-color: #fef2f2;
+  background-color: #FFF0F0; /* Fundo vermelho claro */
   color: var(--danger);
-  border: 1px solid #fecaca;
+  border: 1px solid var(--danger);
 }
 
 /* Detalhes da Vaga */
@@ -590,7 +554,7 @@ input[type="checkbox"]:focus {
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .job-details .job-header h3 {
@@ -599,20 +563,18 @@ input[type="checkbox"]:focus {
   font-weight: 700;
 }
 
-.job-details .copy-link-button {
+.job-details .copy-link-button { /* Botão Copiar Link */
   background-color: transparent;
-  border: 1px solid var(--border-medium);
-  color: var(--text-primary);
+  border: 1.5px solid var(--accent-neutral);
+  color: var(--accent-neutral);
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  font-weight: 500;
+}
+.job-details .copy-link-button:hover {
+  background-color: var(--accent-neutral);
+  color: var(--text-on-dark);
 }
 
-.job-details .copy-link-button:hover {
-  background-color: var(--bg-tertiary);
-  border-color: var(--primary);
-  transform: translateY(-1px);
-}
 
 /* Candidaturas */
 .applications {
@@ -623,33 +585,33 @@ input[type="checkbox"]:focus {
   font-size: 1.25rem;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-color);
   font-weight: 600;
 }
 
 .application-item {
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-main); /* Consistente */
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-offset);
   transition: var(--transition);
 }
 
 .application-item:hover {
   box-shadow: var(--shadow-sm);
-  border-color: var(--border-medium);
+  border-color: var(--secondary-text);
 }
 
 .candidate-info p {
   margin-bottom: 0.25rem;
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--secondary-text);
 }
 
 .candidate-info p strong {
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--primary-text);
 }
 
 .application-actions {
@@ -659,45 +621,22 @@ input[type="checkbox"]:focus {
   flex-wrap: wrap;
 }
 
-.application-actions button {
+.application-actions button { /* Botões Baixar e Analisar */
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.download-button {
-  background-color: var(--primary);
-  color: white;
-  border: 1px solid var(--primary);
-}
-
-.download-button:hover {
-  background-color: var(--primary-light);
-  transform: translateY(-1px);
-}
-
-.analyze-button {
-  background-color: var(--primary);
-  color: white;
-  border: 1px solid var(--primary);
-}
-
-.analyze-button:hover {
-  background-color: var(--primary-light);
-  transform: translateY(-1px);
 }
 
 .analysis-results {
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-main); /* Consistente */
   padding: 1.5rem;
   margin-top: 1.5rem;
 }
 
 .analysis-results h4 {
   font-size: 1.125rem;
-  color: var(--text-primary);
+  color: var(--primary-text); /* Mudado de accent para primary */
   margin-bottom: 1rem;
   font-weight: 600;
 }
@@ -707,16 +646,16 @@ input[type="checkbox"]:focus {
 }
 
 .analysis-section h5 {
-  color: var(--text-primary);
+  color: var(--primary-text);
   margin-bottom: 0.75rem;
   font-size: 1rem;
   font-weight: 600;
 }
 
 .skills-list, .roles-list {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
+  background: var(--bg-offset);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-main); /* Consistente */
   padding: 1rem;
   font-size: 0.875rem;
 }
@@ -724,7 +663,7 @@ input[type="checkbox"]:focus {
 .skills-list p, .roles-list p {
   margin: 0.5rem 0;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: var(--secondary-text);
 }
 
 /* Página de Candidatura */
@@ -733,22 +672,22 @@ input[type="checkbox"]:focus {
   max-width: 700px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: var(--bg-primary);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-light);
+  background-color: var(--bg-main);
+  border-radius: var(--radius-main); /* Consistente */
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-color);
 }
 
 .apply-page .job-info h1 {
   font-size: 1.75rem;
-  color: var(--text-primary);
+  color: var(--primary-text);
   margin-bottom: 1rem;
 }
 
 .apply-page .job-info {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .apply-page .application-form h2 {
@@ -765,19 +704,7 @@ input[type="checkbox"]:focus {
   border: none;
 }
 
-.apply-page form button[type="submit"] {
-  width: 100%;
-  margin-top: 1rem;
-  background-color: var(--success);
-  color: white;
-  padding: 0.875rem;
-  font-weight: 600;
-}
-
-.apply-page form button[type="submit"]:hover {
-  background-color: #16a34a;
-  transform: translateY(-1px);
-}
+/* Botão "Enviar Candidatura" já coberto por button[type="submit"] */
 
 .apply-page.success, .apply-page.error {
   text-align: center;
@@ -795,28 +722,7 @@ input[type="checkbox"]:focus {
   text-align: center;
   padding: 3rem;
   font-size: 1.125rem;
-  color: var(--text-muted);
-}
-
-/* Melhor espaçamento para formulários */
-.form-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  justify-content: flex-end;
-}
-
-.form-actions button {
-  min-width: 120px;
-}
-
-.form-actions button.secondary {
-  order: 1;
-}
-
-.form-actions button.primary,
-.form-actions button.success {
-  order: 2;
+  color: var(--secondary-text);
 }
 
 /* Responsividade Melhorada */
@@ -856,24 +762,16 @@ input[type="checkbox"]:focus {
   .application-actions button {
     width: 100%;
   }
-  
-  .form-actions {
-    flex-direction: column-reverse;
-  }
-  
-  .form-actions button {
-    width: 100%;
-  }
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
+  h1 { font-size: 1.75rem; } /* Ajustes para mobile */
+  h2 { font-size: 1.375rem; }
+  h3 { font-size: 1.125rem; }
   
   button, .button {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.875rem;
+    padding: 0.6rem 1rem; /* Um pouco maior para toque */
+    font-size: 0.9rem;
   }
   
   form {
@@ -887,8 +785,8 @@ input[type="checkbox"]:focus {
   input[type="tel"],
   textarea,
   input[type="file"] {
-    padding: 0.75rem;
-    font-size: 0.875rem;
+    padding: 0.75rem 0.875rem; /* Ajuste de padding */
+    font-size: 0.9rem;
   }
   
   .job-item {
@@ -897,7 +795,7 @@ input[type="checkbox"]:focus {
   
   .job-actions button {
     flex: 1;
-    min-width: 0;
+    min-width: auto; /* Permitir que encolham */
   }
   
   .apply-page {
@@ -910,7 +808,7 @@ input[type="checkbox"]:focus {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(5px); /* Menor translação */
   }
   to {
     opacity: 1;
@@ -918,18 +816,18 @@ input[type="checkbox"]:focus {
   }
 }
 
-.card, .job-item, .application-item {
-  animation: fadeIn 0.3s ease-out;
+.card, .job-item, .application-item, .job-form-container, .job-details {
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
 /* Estados de carregamento */
 .loading-spinner {
   width: 1.5rem;
   height: 1.5rem;
-  border: 2px solid var(--border-light);
-  border-top: 2px solid var(--primary);
+  border: 2px solid var(--border-color);
+  border-top: 2px solid var(--accent-neutral); /* Usar cor neutra para spinner */
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite; /* Mais rápido */
   margin: 0 auto;
 }
 
@@ -944,32 +842,79 @@ input[type="checkbox"]:focus {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    animation-delay: -0.01ms !important;
   }
 }
 
 /* Focus visible para navegação por teclado */
 button:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--primary);
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-neutral);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--bg-main), 0 0 0 4px var(--accent-neutral);
 }
 
-/* Estados de Loading e Empty */
+
+/* Ajustes finais para App.css específico (se houver algum resquício) */
+#root { /* Este #root é do App.css, manter o global do index.css */
+  /* max-width: 1280px;  Já definido no #root global */
+  /* margin: 0 auto;      Já definido no #root global */
+  /* padding: 2rem;       Sobrescrever com o padding do #root global (0 1.5rem) ou ajustar */
+  text-align: center; /* Este é específico do App.css, pode ser mantido se o alinhamento central for desejado em algum contexto específico, mas o global é text-align: left */
+}
+
+/* .logo, .logo:hover, .logo.react:hover, @keyframes logo-spin, .card (do App.css), .read-the-docs - Removidos ou sobrescritos pelas novas estilizações mais globais. Se precisar deles, reintroduza com cuidado para não conflitar. */
+
+
+/* Estados de Loading e Empty Genéricos */
 .loading-state, .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem; /* Reduzido um pouco */
   text-align: center;
-  background: var(--bg-secondary);
-  border-radius: var(--radius);
-  border: 1px dashed var(--border-medium);
+  background: var(--bg-offset);
+  border-radius: var(--radius-main); /* Consistente */
+  border: 1px dashed var(--border-color); /* Linha tracejada mais sutil */
 }
+.empty-state.small { /* Variação para mensagens menores de "vazio" */
+    padding: 1rem;
+    border-style: solid;
+}
+
 
 .loading-state p, .empty-state p {
   margin-top: 1rem;
-  color: var(--text-muted);
+  color: var(--secondary-text);
   font-size: 0.9rem;
+}
+
+/* Ações do formulário na página de candidatura (ApplyPage) */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem; /* Reduzido */
+}
+
+.form-actions button {
+  flex: 1;
+}
+.form-actions button.secondary { /* Estilo específico para o botão Voltar */
+    background-color: transparent;
+    color: var(--primary-text);
+    border-color: var(--border-color);
+}
+.form-actions button.secondary:hover {
+    background-color: var(--bg-offset);
+    border-color: var(--primary-text);
+}
+
+
+@media (max-width: 480px) {
+  .form-actions {
+    flex-direction: column;
+  }
 }

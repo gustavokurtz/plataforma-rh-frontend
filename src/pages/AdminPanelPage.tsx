@@ -141,8 +141,8 @@ export const AdminPanelPage: React.FC = () => {
   return (
     <div className="admin-panel">
       <header>
-      <h1>Painel Recrutamento Sankhya</h1>
-        <button onClick={logout}>Sair</button>
+        <h1>Painel Recrutamento Sankhya</h1>
+        <button onClick={logout} className="neutral">Sair</button>
       </header>
 
       {error && <div className="error-message">{error}</div>}
@@ -151,7 +151,7 @@ export const AdminPanelPage: React.FC = () => {
         <div className="jobs-list">
           <div className="jobs-header">
             <h2>Vagas</h2>
-            <button onClick={() => setShowCreateForm(true)}>Nova Vaga</button>
+            <button onClick={() => setShowCreateForm(true)} className="success">Nova Vaga</button>
           </div>
 
           {isLoadingJobs ? (
@@ -174,9 +174,9 @@ export const AdminPanelPage: React.FC = () => {
                 </div>
                 
                 <div className="job-actions">
-                  <button onClick={() => setSelectedJob(job)}>Detalhes</button>
-                  <button onClick={() => setEditingJob(job)}>Editar</button>
-                  <button onClick={() => handleDeleteJob(job.id)}>Excluir</button>
+                  <button onClick={() => setSelectedJob(job)} className="neutral">Detalhes</button>
+                  <button onClick={() => setEditingJob(job)} className="neutral">Editar</button>
+                  <button onClick={() => handleDeleteJob(job.id)} className="danger">Excluir</button>
                 </div>
               </div>
             ))
@@ -186,23 +186,27 @@ export const AdminPanelPage: React.FC = () => {
         {showCreateForm && (
           <div className="job-form-container">
             <h2>Nova Vaga</h2>
-            <JobForm
-              onSubmit={handleCreateJob}
-              isEditing={false}
-            />
-            <button onClick={() => setShowCreateForm(false)}>Cancelar</button>
+            <div className="form-actions-wrapper">
+              <JobForm
+                onSubmit={handleCreateJob}
+                isEditing={false}
+              />
+              <button onClick={() => setShowCreateForm(false)} className="danger form-cancel-button">Cancelar</button>
+            </div>
           </div>
         )}
 
         {editingJob && (
           <div className="job-form-container">
             <h2>Editar Vaga</h2>
-            <JobForm
-              onSubmit={handleUpdateJob}
-              initialData={editingJob}
-              isEditing={true}
-            />
-            <button onClick={() => setEditingJob(null)}>Cancelar</button>
+             <div className="form-actions-wrapper">
+              <JobForm
+                onSubmit={handleUpdateJob}
+                initialData={editingJob}
+                isEditing={true}
+              />
+              <button onClick={() => setEditingJob(null)} className="danger form-cancel-button">Cancelar</button>
+            </div>
           </div>
         )}
 
@@ -215,7 +219,7 @@ export const AdminPanelPage: React.FC = () => {
                 <button
                   id={`copy-link-${selectedJob.id}`}
                   onClick={() => handleCopyJobLink(selectedJob.id)}
-                  className="copy-link-button"
+                  className="copy-link-button neutral"
                   title="Copiar link da vaga"
                 >
                   Copiar Link da Vaga
@@ -228,7 +232,11 @@ export const AdminPanelPage: React.FC = () => {
 
             <div className="applications">
               <h3>Candidaturas</h3>
-              {selectedJob.applications?.map((application) => (
+              {selectedJob.applications?.length === 0 || !selectedJob.applications ? (
+                 <div className="empty-state small">
+                    <p>Nenhuma candidatura para esta vaga ainda.</p>
+                 </div>
+              ) : selectedJob.applications?.map((application) => (
                 <div key={application.id} className="application-item">
                   <div className="candidate-info">
                     <p><strong>{application.candidateName}</strong></p>
@@ -241,14 +249,14 @@ export const AdminPanelPage: React.FC = () => {
                   <div className="application-actions">
                     <button
                       onClick={() => handleDownloadResume(application.id)}
-                      className="download-button"
+                      className="download-button neutral"
                     >
                       Baixar Currículo
                     </button>
                     <button
                       onClick={() => handleAnalyzeResume(application.id)}
                       disabled={loadingApplicationId === application.id}
-                      className="analyze-button"
+                      className="analyze-button neutral"
                     >
                       {loadingApplicationId === application.id ? 'Analisando...' : 'Analisar Currículo (ATS)'}
                     </button>
@@ -284,11 +292,10 @@ export const AdminPanelPage: React.FC = () => {
                 </div>
               ))}
             </div>
-
-            <button onClick={() => setSelectedJob(null)}>Fechar</button>
+            <button onClick={() => setSelectedJob(null)} className="neutral">Fechar Detalhes</button>
           </div>
         )}
       </div>
     </div>
   );
-}; 
+};
