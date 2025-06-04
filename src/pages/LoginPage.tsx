@@ -30,58 +30,41 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="login-page-container">
-      <div className="login-card">
-        <img src="/src/assets/logo-preto.svg" alt="Sankhya Logo" className="login-logo" />
-        <h1>Bem-vindo!</h1>
-        <p className="login-subtitle">Acesse sua conta para continuar.</p>
+    <div className="login-page">
+      <form onSubmit={handleSubmit}>
+        <div className="login-header">
+          <img src="/src/assets/logo-preto.svg" alt="Sankhya Logo" className="login-logo" />
+          <h2>Acesso ao Painel</h2>
+        </div>
+        
+        {error && <div className="error-message">{error}</div>}
+        
+        <div className="form-group">
+          <label htmlFor="username">Usuário</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            className="form-input"
+          />
+        </div>
 
-        {error && <div className="error-message login-error">{error}</div>}
+        <div className="form-group">
+          <label htmlFor="password">Senha</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="form-input"
+          />
+        </div>
 
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="input-group">
-            <label htmlFor="username">Usuário</label>
-            <div className="input-wrapper">
-              {/* Replace with actual icon component if available */}
-              <span className="input-icon">
-                {/* <UserIcon className="h-5 w-5" /> */}
-                👤
-              </span>
-              <input
-                id="username"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Seu usuário"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="input-group">
-            <label htmlFor="password">Senha</label>
-            <div className="input-wrapper">
-              {/* Replace with actual icon component if available */}
-              <span className="input-icon">
-                {/* <LockClosedIcon className="h-5 w-5" /> */}
-                🔒
-              </span>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Sua senha"
-                required
-              />
-            </div>
-          </div>
-
-          <button type="submit" className="login-button">
-            Entrar
-          </button>
-        </form>
-      </div>
+        <button type="submit" className="success">Entrar</button>
+      </form>
     </div>
   );
 };

@@ -16,6 +16,7 @@ export const JobForm: React.FC<JobFormProps> = ({
   const [description, setDescription] = useState('');
   const [salary, setSalary] = useState<string>('');
   const [location, setLocation] = useState('');
+  const [type, setType] = useState('CLT');
   const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export const JobForm: React.FC<JobFormProps> = ({
       setDescription(initialData.description);
       setSalary(initialData.salary?.toString() || '');
       setLocation(initialData.location);
+      setType(initialData.type || 'CLT');
       setIsActive(initialData.isActive ?? true);
     } else {
       // Reset form for new job creation
@@ -31,6 +33,7 @@ export const JobForm: React.FC<JobFormProps> = ({
       setDescription('');
       setSalary('');
       setLocation('');
+      setType('CLT');
       setIsActive(true);
     }
   }, [initialData, isEditing]); // Depend on isEditing to reset if switching from edit to new
@@ -42,6 +45,7 @@ export const JobForm: React.FC<JobFormProps> = ({
       title,
       description,
       location,
+      type,
       ...(salary ? { salary: Number(salary) } : {}),
       ...(isEditing ? { isActive } : {}),
     };
@@ -52,6 +56,7 @@ export const JobForm: React.FC<JobFormProps> = ({
         setDescription('');
         setSalary('');
         setLocation('');
+        setType('CLT');
         setIsActive(true);
     }
   };
@@ -78,6 +83,21 @@ export const JobForm: React.FC<JobFormProps> = ({
           required
           rows={5}
         />
+      </div>
+
+      <div>
+        <label htmlFor="type-job-form">Tipo de Contratação *</label>
+        <select
+          id="type-job-form"
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+          required
+        >
+          <option value="CLT">CLT</option>
+          <option value="PJ">PJ</option>
+          <option value="Temporário">Temporário</option>
+          <option value="Estágio">Estágio</option>
+        </select>
       </div>
 
       <div>

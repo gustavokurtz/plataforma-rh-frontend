@@ -173,12 +173,31 @@ export const AdminPanelPage: React.FC = () => {
                   <span className={`status ${job.isActive ? 'active' : 'inactive'}`}>
                     {job.isActive ? 'Ativa' : 'Inativa'}
                   </span>
+                  <p className="job-type">{job.type}</p>
                 </div>
                 
                 <div className="job-actions">
-                  <button onClick={() => setSelectedJob(job)} className="neutral small">Detalhes</button>
-                  <button onClick={() => setEditingJob(job)} className="neutral small">Editar</button>
-                  <button onClick={() => handleDeleteJob(job.id)} className="danger small">Excluir</button>
+                  <button 
+                    onClick={() => setSelectedJob(job)} 
+                    className="neutral small"
+                    disabled={!!editingJob}
+                  >
+                    Detalhes
+                  </button>
+                  <button 
+                    onClick={() => setEditingJob(job)} 
+                    className="neutral small"
+                    disabled={!!selectedJob}
+                  >
+                    Editar
+                  </button>
+                  <button 
+                    onClick={() => handleDeleteJob(job.id)} 
+                    className="danger small"
+                    disabled={!!editingJob || !!selectedJob}
+                  >
+                    Excluir
+                  </button>
                 </div>
               </div>
             ))
@@ -215,22 +234,23 @@ export const AdminPanelPage: React.FC = () => {
         {selectedJob && (
           <div className="job-details">
             <div className="job-details-header">
-                <h2>Detalhes da Vaga</h2>
-                <button onClick={() => setSelectedJob(null)} className="neutral small">Fechar</button>
-            </div>
-            <div className="job-info">
-              <div className="job-header-title-row">
-                <h3>{selectedJob.title}</h3>
+              <h2>Detalhes da Vaga</h2>
+              <div className="actions">
                 <button
                   id={`copy-link-${selectedJob.id}`}
                   onClick={() => handleCopyJobLink(selectedJob.id)}
-                  className="copy-link-button neutral small"
+                  className="neutral small"
                   title="Copiar link da vaga"
                 >
                   Copiar Link
                 </button>
+                <button onClick={() => setSelectedJob(null)} className="neutral small">Fechar</button>
               </div>
+            </div>
+            <div className="job-info">
+              <h3>{selectedJob.title}</h3>
               <p>{selectedJob.description}</p>
+              <p><strong>Tipo:</strong> {selectedJob.type}</p>
               {selectedJob.salary && <p><strong>Salário:</strong> R$ {selectedJob.salary}</p>}
               <p><strong>Localização:</strong> {selectedJob.location}</p>
             </div>

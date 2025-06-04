@@ -2,8 +2,9 @@ export interface Job {
   id: string;
   title: string;
   description: string;
-  salary?: number;
   location: string;
+  type: string;
+  salary?: number;
   isActive: boolean;
   applications?: JobApplication[];
 }
@@ -36,8 +37,9 @@ export interface AuthContextType {
 export interface CreateJobDto {
   title: string;
   description: string;
-  salary?: number;
   location: string;
+  type: string;
+  salary?: number;
 }
 
 export interface UpdateJobDto extends CreateJobDto {

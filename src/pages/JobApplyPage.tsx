@@ -102,6 +102,10 @@ export const JobApplyPage: React.FC = () => {
 
   return (
     <div className="apply-page">
+      <div className="apply-header">
+        <img src="/src/assets/logo-preto.svg" alt="Sankhya Logo" className="apply-logo" />
+      </div>
+
       <div className="job-info">
         <h1>{job.title}</h1>
         <p>{job.description}</p>
@@ -157,7 +161,7 @@ export const JobApplyPage: React.FC = () => {
 
           <div className="form-actions">
             <button type="button" onClick={handleBack} className="secondary">Voltar</button>
-            <button type="submit" disabled={isLoading} className="primary">
+            <button type="submit" disabled={isLoading} className="success">
               {isLoading ? 'Enviando...' : 'Enviar Candidatura'}
             </button>
           </div>

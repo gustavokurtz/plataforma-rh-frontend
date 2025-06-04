@@ -103,10 +103,14 @@ button:focus-visible, .button:focus-visible {
 button:disabled, .button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Button Variants */
-button.success, .button.success { /* Sankhya Green for primary actions */
+button.success, .button.success {
   background-color: var(--sankhya-green);
   color: var(--text-on-primary);
   border-color: var(--sankhya-green);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
 }
 button.success:hover, .button.success:hover {
   background-color: var(--sankhya-green-hover);
@@ -123,7 +127,7 @@ button.danger:hover, .button.danger:hover {
   border-color: var(--danger-color-hover);
 }
 
-button.neutral, .button.neutral { /* Dark gray for neutral actions */
+button.neutral, .button.neutral {
   background-color: var(--neutral-dark);
   color: var(--text-on-dark);
   border-color: var(--neutral-dark);
@@ -357,7 +361,20 @@ textarea { min-height: 100px; resize: vertical; }
 .status.inactive { background-color: #FCE8E6; color: var(--danger-color); border-color: var(--danger-color); }
 
 /* Job Details */
-.job-details-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.job-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.job-details-header .actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .job-details-header h2 { margin-bottom: 0; font-size: 1.5rem; }
 .job-details .job-header-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
 .job-details .job-header-title-row h3 { margin:0; font-size: 1.25rem; font-weight: 600; }
@@ -376,16 +393,49 @@ textarea { min-height: 100px; resize: vertical; }
 .analysis-section h5 { font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 500; }
 .skills-list, .roles-list { background: var(--bg-offset); border: 1px solid var(--border-color); border-radius: var(--radius-main); padding: 0.75rem; font-size: 0.85rem; }
 
-/* Apply Page (existing styles) */
-/* ... (your existing apply page styles) ... */
-.apply-page { max-width: 600px; margin: 2rem auto; padding: 2rem; background-color: var(--bg-main); border-radius: var(--radius-main); box-shadow: var(--shadow-xl); border: 1px solid var(--border-color); }
-.apply-page .job-info h1 { font-size: 1.5rem; }
-.apply-page .job-info { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
-.apply-page .application-form h2 { font-size: 1.25rem; margin-bottom: 1rem; text-align: center; }
-.apply-page form { box-shadow: none; padding: 0; border: none; }
-.apply-page .form-actions button.success { width: 100%; } /* Enviar candidatura */
-.apply-page .form-actions button.secondary { width: 100%; } /* Voltar */
+/* Apply Page */
+.apply-page {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--bg-main);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-color);
+}
 
+.apply-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.apply-logo {
+  max-width: 180px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.apply-page .job-info {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.apply-page .job-info h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-actions button {
+  flex: 1;
+  min-width: 120px;
+}
 
 .loading-state, .empty-state {
   padding: 2rem 1rem; background: var(--bg-offset); border-radius: var(--radius-main); border: 1px dashed var(--border-color);
@@ -583,4 +633,145 @@ textarea { min-height: 100px; resize: vertical; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Login Page */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.login-page form {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-main);
+  padding: 2rem;
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-color);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-logo {
+  max-width: 180px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.login-header h2 {
+  color: var(--primary-text);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-main);
+  background-color: var(--bg-main);
+  color: var(--primary-text);
+  transition: var(--transition);
+}
+
+.form-input:focus {
+  border-color: var(--sankhya-green);
+  box-shadow: 0 0 0 2px rgba(0, 168, 107, 0.1);
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: var(--secondary-text);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Melhorias nos botões */
+button.success, .button.success {
+  background-color: var(--sankhya-green);
+  color: var(--text-on-primary);
+  border-color: var(--sankhya-green);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+}
+
+button.success:hover, .button.success:hover {
+  background-color: var(--sankhya-green-hover);
+  border-color: var(--sankhya-green-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 168, 107, 0.1), 0 2px 4px -1px rgba(0, 168, 107, 0.06);
+}
+
+button.success:active, .button.success:active {
+  transform: translateY(0);
+}
+
+/* Form actions para página de candidatura */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-actions button {
+  flex: 1;
+  min-width: 120px;
+}
+
+@media (max-width: 480px) {
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
+  
+  .login-page form {
+    padding: 1.5rem;
+  }
+}
+
+.job-type {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--secondary-text);
+  margin-top: 0.25rem;
+  padding: 0.2rem 0;
+}
+
+.job-info .status {
+  margin-left: 0.5rem;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
