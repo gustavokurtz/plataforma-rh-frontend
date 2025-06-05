@@ -141,7 +141,7 @@ export const AdminPanelPage: React.FC = () => {
     <div className="admin-panel">
       <header>
         <div className="header-title-logo">
-          <img src="/src/assets/LogoCarreiras.png" alt="Nt Logo" /> 
+          <img src="https://i.ibb.co/ZRZSVhJK/Logo-Carreiras.png" alt="Nt Logo" /> 
           
         </div>
         <button onClick={logout} className="neutral small">Sair</button>
