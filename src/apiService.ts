@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { CreateJobDto, Job, JobApplication, ResumeAnalysis, UpdateJobDto } from './types';
 
 const api = axios.create({
-  baseURL: 'https://plataforma-rh-ats.fly.dev/',
+  baseURL: 'https://plataforma-rh-ats.fly.dev',
 });
 
 // Interceptor para adicionar o token de autenticação
