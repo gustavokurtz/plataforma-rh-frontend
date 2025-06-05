@@ -63,13 +63,13 @@ export const JobApplyPage: React.FC = () => {
     }
   };
 
-  const handleBack = () => {
-    if (window.history.length > 2) {
-      navigate(-1);
-    } else {
-      window.location.href = '/';
-    }
-  };
+  // const handleBack = () => {
+  //   if (window.history.length > 2) {
+  //     navigate(-1);
+  //   } else {
+  //     window.location.href = '/';
+  //   }
+  // };
 
   if (success) {
     return (
