@@ -101,7 +101,7 @@ export const JobApplyPage: React.FC = () => {
   return (
     <div className="apply-page">
       <div className="apply-header">
-        <img src="/src/assets/logo-preto.svg" alt="Sankhya Logo" className="apply-logo" />
+      <img src="/src/assets/LogoCarreiras.png" alt="Nt Logo" className="apply-logo" />
       </div>
 
       <div className="job-info">

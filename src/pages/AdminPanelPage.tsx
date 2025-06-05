@@ -141,8 +141,8 @@ export const AdminPanelPage: React.FC = () => {
     <div className="admin-panel">
       <header>
         <div className="header-title-logo">
-          <img src="/src/assets/logo-preto.svg" alt="Sankhya Logo" /> 
-          {/* <span className="panel-title-text">Painel Recrutamento Sankhya</span> */}
+          <img src="/src/assets/LogoCarreiras.png" alt="Nt Logo" /> 
+          
         </div>
         <button onClick={logout} className="neutral small">Sair</button>
       </header>

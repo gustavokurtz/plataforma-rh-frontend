@@ -33,7 +33,7 @@ export const LoginPage: React.FC = () => {
     <div className="login-page">
       <form onSubmit={handleSubmit}>
         <div className="login-header">
-          <img src="/src/assets/logo-preto.svg" alt="Sankhya Logo" className="login-logo" />
+        <img src="/src/assets/LogoCarreiras.png" alt="Nt Logo" className="login-logo" />
           <h2>Acesso ao Painel</h2>
         </div>
         
